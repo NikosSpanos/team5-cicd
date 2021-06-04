@@ -122,19 +122,21 @@ resource "azurerm_virtual_machine" "vm_cicd" {
 
   provisioner "file" {
     source      = "/team5-resources/"
-    destination = "/tmp"
+    destination = "/tmp/"
   }
 
   provisioner "remote-exec" {
 
     inline = [
       #"sudo su",
-      "apt update",
-      "apt install software-properties-common",
-      "add-apt-repository --yes --update ppa:ansible/ansible",
-      "apt install -y ansible",
-      "ansible --version",
-      "apt-get install -y openjdk-8-jdk"
+      "echo Started to install packages...",
+      "sudo apt update",
+      "sudo apt install software-properties-common",
+      "sudo add-apt-repository --yes --update ppa:ansible/ansible",
+      "sudo apt install -y ansible",
+      "sudo ansible --version",
+      "sudo apt-get install -y openjdk-8-jdk",
+      "echo Package installation finished.",
     ]
   }
 }
