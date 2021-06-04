@@ -120,11 +120,6 @@ resource "azurerm_virtual_machine" "vm_cicd" {
       host        = "${azurerm_public_ip.public_ip_cicd.ip_address}"
   }
 
-  provisioner "file" {
-    source      = "/team5-resources/"
-    destination = "/tmp/"
-  }
-
   provisioner "remote-exec" {
 
     inline = [
